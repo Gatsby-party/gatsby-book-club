@@ -5,9 +5,35 @@ module.exports = {
     author: `@gatsbyjs`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-react-helmet`, // just a string or an object
     {
-      resolve: `gatsby-source-filesystem`,
+      // For every dependency we need to add info also in here.
+      // Check the dependencie website for more info.
+      resolve: 'gatsby-firesource',
+      options: {
+        credential: require("./firebase.json"),
+        types: [
+          {
+            type: 'Book',
+            collection: 'books',
+            map: doc => ({
+              title: doc.title,
+              summary: doc.summary,
+              author___NODE: doc.author.id // "___NODE" is for GrafQL. 'id' is for the refference to the author 
+            }),
+          },
+          {
+            type: 'Authors',
+            collection: 'authors',
+            map: doc => ({
+              name: doc.name,
+            }),
+          }
+        ]
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`, // plugin name
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
