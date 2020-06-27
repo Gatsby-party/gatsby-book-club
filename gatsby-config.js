@@ -1,13 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Gatsby books`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`, // just a string or an object
     {
-      // For every dependency we need to add info also in here.
+      // For every plugin we need to reference it in here.
       // Check the dependencie website for more info.
       resolve: 'gatsby-firesource',
       options: {

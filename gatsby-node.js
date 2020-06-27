@@ -1,8 +1,9 @@
 const path = require("path")
 
 exports.createPages = ({ graphql, actions }) => {
+  
   const { createPage } = actions
-const bookTemplate = path.resolve('src/templates/bookTemplates.js')
+  const bookTemplate = path.resolve("src/templates/bookTemplates.js")
   // Query all books to know what pages to create
   return graphql(`
     {
