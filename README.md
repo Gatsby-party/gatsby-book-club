@@ -1,5 +1,5 @@
 
-
+Udemy course [Gatsby JS & Firebase: HYBRID Gatsby realtime + static sites](https://www.udemy.com/course/gatsby-js-firebase-hybrid-realtime-static-sites/)
 
 
 

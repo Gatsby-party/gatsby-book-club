@@ -15,9 +15,10 @@ const BookItemWrapper = styled.section`
     }
   }
 `
-const BookItem = ({ authorName, bookTitle, bookSummary, children }) => {
+const BookItem = ({ authorName, bookTitle, bookSummary, bookCover, children }) => {
   return (
     <BookItemWrapper>
+        <img src={bookCover} alt='Book cover' />
       <h2>
         {/* Check the gatsby-node.js where we configure the context of this page.
             There you see in graphql that we return this:

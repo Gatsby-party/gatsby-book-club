@@ -20,7 +20,8 @@ module.exports = {
             map: doc => ({
               title: doc.title,
               summary: doc.summary,
-              author___NODE: doc.author.id // "___NODE" is for GrafQL. 'id' is for the refference to the author 
+              author___NODE: doc.author.id, // "___NODE" is for GrafQL. 'id' is for the refference to the author 
+              imageUrl: doc.imageUrl
             }),
           },
           {

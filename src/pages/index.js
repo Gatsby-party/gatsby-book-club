@@ -31,6 +31,7 @@ const IndexPage = props => {
       {props.data.allBook.edges.map(edge => {
         return (
           <BookItem key={edge.node.id}
+          bookCover={edge.node.imageUrl}
           bookTitle={edge.node.title}
           bookSummary={edge.node.summary}
           authorName={edge.node.author.name}
@@ -58,6 +59,7 @@ export const query = graphql`
           id
           summary
           title
+          imageUrl
           author {
             name
           }
