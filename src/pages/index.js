@@ -1,6 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import styled from 'styled-components'
+import styled from "styled-components"
 
 import Layout from "../components/layout"
 import BookItem from "../components/BookItem"
@@ -8,40 +8,41 @@ import BookItem from "../components/BookItem"
 // import SEO from "../components/seo"
 
 const LinkButton = styled.div`
-text-align: right;
+  text-align: right;
 
-a{
-  padding: 8px;
-  background: rebeccapurple;
-  color: white;
-  border-radius: 8px;
-  text-decoration: none;
+  a {
+    padding: 8px;
+    background: rebeccapurple;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
 
-  &:hover {
-    background: indigo;
+    &:hover {
+      background: indigo;
+    }
   }
-}
-`;
+`
 
 const IndexPage = props => {
-  // console.log(props)
+  // console.log('IndexPage', props);
 
   return (
     <Layout>
       {props.data.allBook.edges.map(edge => {
         return (
-          <BookItem key={edge.node.id}
-          bookCover={edge.node.imageUrl}
-          bookTitle={edge.node.title}
-          bookSummary={edge.node.summary}
-          authorName={edge.node.author.name}
+          <BookItem
+            key={edge.node.id}
+            bookCover={edge.node.localImage.publicURL}
+            bookTitle={edge.node.title}
+            bookSummary={edge.node.summary}
+            authorName={edge.node.author.name}
           >
             {/* <h2>
               {edge.node.title} - <small>{edge.node.author.name}</small>
             </h2>
-            <div>{edge.node.summary}</div> */} 
+            <div>{edge.node.summary}</div> */}
             <LinkButton>
-            <Link to={`/book/${edge.node.id}`}>Join Conversation</Link>
+              <Link to={`/book/${edge.node.id}`}>Join Conversation</Link>
             </LinkButton>
           </BookItem>
         )
@@ -50,7 +51,10 @@ const IndexPage = props => {
   )
 }
 
+// Use grafql in Gatsby
 // grafql injects the results of the query into our props
+// The shema below is from the a query in GraphiGL.
+// To get it, just make a query in GraphiGL of the elements you want to show.
 export const query = graphql`
   {
     allBook {
@@ -59,7 +63,9 @@ export const query = graphql`
           id
           summary
           title
-          imageUrl
+          localImage {
+            publicURL
+          }
           author {
             name
           }
